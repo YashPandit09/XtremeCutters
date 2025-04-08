@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #291dd6, #D8BFD8);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logotext {
+            color: #291dd6;
+            font-size: 24px;
+        }
+
+        .navmenu {
+            display: flex;
+            list-style: none;
+        }
+
+        .navitem {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .navlink {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navlink:hover {
+            color: #291dd6;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+            min-width: 150px;
+            list-style: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-link {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .dropdown-link:hover {
+            color: #291dd6;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .gender-options label {
+            font-weight: normal;
+        }
+
+        .location {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .location input {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #949d2b;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c74151;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar section-content">
+            <a href="FrontPage.html" class="navlogo">
+                <h2 class="logotext">Xtreme Cutters</h2>
+            </a>
+            <ul class="navmenu">
+                <li class="navitem">
+                    <a href="FrontPage.html" class="navlink">Home</a>
+                </li>
+                <li class="navitem dropdown">
+                    <a href="Products.html" class="navlink">Products</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="Product1.html" class="dropdown-link">Product 1</a></li>
+                        <li><a href="Product2.html" class="dropdown-link">Product 2</a></li>
+                        <li><a href="Product3.html" class="dropdown-link">Product 3</a></li>
+                    </ul>
+                </li>
+                <li class="navitem">
+                    <a href="Register.html" class="navlink">Register</a>
+                </li>
+                <li class="navitem">
+                    <a href="login.html" class="navlink">Login</a>
+                </li>
+                <li class="navitem">
+                    <a href="contactus.html" class="navlink">Contact Us</a>
+                </li>
+                <li class="navitem">
+                    <a href="cart.html" class="navlink">Cart</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <form class="registration-form" id="registrationForm">
+                <h2>Registration Form</h2>
+
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter full name" required
+                    oninput="validateField('fullname')">
+                <span id="fullname-error" class="error"></span>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="Enter email address" required
+                    oninput="validateField('email')">
+                <span id="email-error" class="error"></span>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter phone number" required oninput="validateField('phone')">
+                <span id="phone-error" class="error"></span>
+
+                <label for="birthdate">Birth Date</label>
+                <input type="date" id="birthdate" required onchange="validateField('birthdate')">
+                <span id="birthdate-error" class="error"></span>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" placeholder="Enter street address" required
+                    oninput="validateField('address')">
+                <span id="address-error" class="error"></span>
+                <input type="text" id="address2" placeholder="Enter street address line 2">
+
+                <label for="country">Country</label>
+                <select id="country" onchange="validateField('country')">
+                    <option value="">Select Country</option>
+                    <option value="India">India</option>
+                    <option value="USA">USA</option>
+                    <option value="UK">UK</option>
+                    <option value="Canada">Canada</option>
+                </select>
+                <span id="country-error" class="error"></span>
+
+                <div class="location">
+                    <input type="text" id="city" placeholder="Enter your city" required oninput="validateField('city')">
+                    <input type="text" id="region" placeholder="Enter your region" required
+                        oninput="validateField('region')">
+                    <input type="text" id="postal" placeholder="Enter postal code" required
+                        oninput="validateField('postal')">
+                </div>
+                <span id="city-error" class="error"></span>
+                <span id="region-error" class="error"></span>
+                <span id="postal-error" class="error"></span>
+
+                <button type="button" onclick="submitForm()">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateField(fieldName) {
+            // Get field value
+            const value = document.getElementById(fieldName).value.trim();
+
+            // Clear previous error
+            const errorElement = document.getElementById(fieldName + "-error");
+
+            // Validation based on field type
+            switch (fieldName) {
+                case 'fullname':
+                    const nameRegex = /^[A-Za-z\s]{3,}$/;
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your full name.";
+                    } else if (!nameRegex.test(value)) {
+                        errorElement.innerText = "Name should contain only letters and spaces (minimum 3 characters).";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'email':
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your email address.";
+                    } else if (!emailRegex.test(value)) {
+                        errorElement.innerText = "Please enter a valid email address.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'phone':
+                    const phoneRegex = /^\d{10,15}$/;
+                    const cleanPhone = value.replace(/[\s\-\(\)]/g, '');
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your phone number.";
+                    } else if (!phoneRegex.test(cleanPhone)) {
+                        errorElement.innerText = "Please enter a valid phone number (10-15 digits).";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'birthdate':
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your birth date.";
+                    } else {
+                        // Check if user is at least 18 years old
+                        const today = new Date();
+                        const birthdateObj = new Date(value);
+                        const age = today.getFullYear() - birthdateObj.getFullYear();
+                        const monthDiff = today.getMonth() - birthdateObj.getMonth();
+
+                        if (age < 18 || (age === 18 && monthDiff < 0) ||
+                            (age === 18 && monthDiff === 0 && today.getDate() < birthdateObj.getDate())) {
+                            errorElement.innerText = "You must be at least 18 years old to register.";
+                        } else {
+                            errorElement.innerText = "";
+                        }
+                    }
+                    break;
+
+                case 'address':
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your address.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'country':
+                    if (value === "" || value === "Select Country") {
+                        errorElement.innerText = "Please select your country.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'city':
+                    const cityRegex = /^[A-Za-z\s]+$/;
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your city.";
+                    } else if (!cityRegex.test(value)) {
+                        errorElement.innerText = "City should contain only letters and spaces.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'region':
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your region/state/province.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+
+                case 'postal':
+                    const postalRegex = /^\d+$/;
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your postal/zip code.";
+                    } else if (!postalRegex.test(value)) {
+                        errorElement.innerText = "Postal code should contain only numbers.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+            }
+        }
+
+        function validateForm() {
+            // Validate all fields individually
+            const fields = ['fullname', 'email', 'phone', 'birthdate', 'address', 'country', 'city', 'region', 'postal'];
+            fields.forEach(field => validateField(field));
+
+            // Check if there are any errors
+            let isValid = true;
+            fields.forEach(field => {
+                const errorElement = document.getElementById(field + "-error");
+                if (errorElement.innerText !== "") {
+                    isValid = false;
+                }
+            });
+
+            return isValid;
+        }
+
+        function submitForm() {
+            // Run validation first
+            if (validateForm()) {
+                // Proceed with form submission logic
+                var fullname = document.getElementById("fullname").value;
+                var email = document.getElementById("email").value;
+                var phone = document.getElementById("phone").value;
+                var birthdate = document.getElementById("birthdate").value;
+                var address = document.getElementById("address").value;
+                var address2 = document.getElementById("address2").value;
+                var country = document.getElementById("country").value;
+                var city = document.getElementById("city").value;
+                var region = document.getElementById("region").value;
+                var postal = document.getElementById("postal").value;
+
+                var userData = {
+                    fullname: fullname,
+                    email: email,
+                    phone: phone,
+                    birthdate: birthdate,
+                    address: address,
+                    address2: address2,
+                    country: country,
+                    city: city,
+                    region: region,
+                    postal: postal
+                };
+
+                localStorage.setItem("userData", JSON.stringify(userData));
+                alert("Registration successful! Redirecting to display page...");
+                // Redirect to display page
+                window.location.href = "display.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

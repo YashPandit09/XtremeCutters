@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid Carbide Reamer</title>
+    <link rel="stylesheet" href="Product1.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar section-content">
+      <a href="FrontPage.html" class="navlogo">
+        <h2 class="logotext">Xtreme Cutters</h2>
+      </a>
+      <ul class="navmenu">
+        <li class="navitem">
+          <a href="FrontPage.html" class="navlink">Home</a>
+        </li>
+        <li class="navitem dropdown">
+          <a href="Products.html" class="navlink">Products</a>
+          <ul class="dropdown-menu">
+            <li><a href="Product1.html" class="dropdown-link">Product 1</a></li>
+            <li><a href="Product2.html" class="dropdown-link">Product 2</a></li>
+            <li><a href="Product3.html" class="dropdown-link">Product 3</a></li>
+          </ul>
+        </li>
+        <li class="navitem">
+          <a href="Register.html" class="navlink">Register</a>
+        </li>
+        <li class="navitem">
+          <a href="login.html" class="navlink">Login</a>
+        </li>
+        <li class="navitem">
+          <a href="contactus.html" class="navlink">Contact Us</a>
+        </li>
+        <li class="navitem">
+          <a href="cart.html" class="navlink">Cart</a>
+        </li></li>
+      </ul>
+
+    </nav>
+  </header>
+    <main class="container">
+        <div class="left-column">
+          <img id="product-image" data-image="Carbide Reamer" class="active" src="StraightFlute.png" alt="Carbide Reamer">
+        </div>
+        <div class="right-column">
+          <div class="product-description">
+            <span>Carbide Cutter</span>
+            <h1>Solid Carbide Reamer</h1>
+            <p>A solid carbide reamer cutter is a precision tool used for finishing holes to precise dimensions and smooth finishes. Made from solid carbide, these reamers offer excellent hardness and wear resistance, making them ideal for machining hard materials like steel, cast iron, and aluminum alloys.</p>
+          </div>
+          <div class="product-configuration">
+            <div class="cable-config">
+              <span>Cable configuration</span>
+              <div class="cable-choose">
+                <button class="selected" onclick="changeProduct('StraightFlute.png', 500)">Straight Flute</button>
+                <button onclick="changeProduct('SpiralFlute.png', 550)">Spiral Flute</button>
+                <button onclick="changeProduct('Tapered.png', 600)">Tapered</button>
+                <button onclick="changeProduct('CarbideTipped.png', 650)">Carbide Tipped</button>
+              </div>
+              <a href="contactus.html">Enquire about a Custom Cutter</a>
+            </div>
+          </div>
+          <div class="product-price">
+            <span id="product-price">Rs. 500</span>
+            <a href="#" class="cart-btn">Add to cart</a>
+          </div>
+        </div>
+      </main>
+<script>
+  function changeProduct(imageSrc, price) {
+    document.getElementById('product-image').src = imageSrc;
+    document.getElementById('product-price').innerText = 'Rs. ' + price;
+  }
+</script>
+</body>
+</html>

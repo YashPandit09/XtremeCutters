@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Data</title>
+    <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #9370DB, #D8BFD8);
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+
+
+
+        .gender-options label {
+            font-weight: normal;
+        }
+
+        .location {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .location input {
+            flex: 1;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #9370DB;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #6A5ACD;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar section-content">
+          <a href="FrontPage.html" class="navlogo">
+            <h2 class="logotext">Xtreme Cutters</h2>
+          </a>
+          <ul class="navmenu">
+            <li class="navitem">
+              <a href="FrontPage.html" class="navlink">Home</a>
+            </li>
+            <li class="navitem dropdown">
+              <a href="Products.html" class="navlink">Products</a>
+              <ul class="dropdown-menu">
+                <li><a href="Product1.html" class="dropdown-link">Product 1</a></li>
+                <li><a href="Product2.html" class="dropdown-link">Product 2</a></li>
+                <li><a href="Product3.html" class="dropdown-link">Product 3</a></li>
+              </ul>
+            </li>
+            <li class="navitem">
+              <a href="Register.html" class="navlink">Register</a>
+            </li>
+            <li class="navitem">
+              <a href="login.html" class="navlink">Login</a>
+            </li>
+            <li class="navitem">
+              <a href="contactus.html" class="navlink">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    <div class="container">
+        <h2>Registration Details</h2>
+        <b><p id="displayFullname"></p></b>
+        <p id="displayEmail"></p>
+        <p id="displayPhone"></p>
+        <p id="displayBirthdate"></p>
+        <p id="displayAddress"></p>
+        <p id="displayAddress2"></p>
+        <p id="displayCountry"></p>
+        <p id="displayCity"></p>
+        <p id="displayRegion"></p>
+        <p id="displayPostal"></p>
+    </div>
+    
+    <script>
+        var userData = JSON.parse(localStorage.getItem("userData"));
+
+        if (userData) {
+            document.getElementById("displayFullname").innerText = "Full Name: " + userData.fullname;
+            document.getElementById("displayEmail").innerText = "Email Address: " + userData.email;
+            document.getElementById("displayPhone").innerText = "Phone Number: " + userData.phone;
+            document.getElementById("displayBirthdate").innerText = "Birth Date: " + userData.birthdate;
+            document.getElementById("displayAddress").innerText = "Address: " + userData.address;
+            document.getElementById("displayAddress2").innerText = "Address Line 2: " + userData.address2;
+            document.getElementById("displayCountry").innerText = "Country: " + userData.country;
+            document.getElementById("displayCity").innerText = "City: " + userData.city;
+            document.getElementById("displayRegion").innerText = "Region: " + userData.region;
+            document.getElementById("displayPostal").innerText = "Postal Code: " + userData.postal;
+        } else {
+            document.body.innerHTML = "<p>No registration data found. Please go back and fill out the registration form.</p>";
+        }
+    </script>
+</body>
+</html>

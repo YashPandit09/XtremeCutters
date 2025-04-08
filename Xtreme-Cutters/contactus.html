@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to bottom, #574bff, #D8BFD8);
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logotext {
+            color: #574bff;
+            font-size: 24px;
+        }
+
+        .navmenu {
+            display: flex;
+            list-style: none;
+        }
+
+        .navitem {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        .navlink {
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navlink:hover {
+            color: #574bff;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            z-index: 1;
+            min-width: 150px;
+            list-style: none;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-link {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .dropdown-link:hover {
+            color: #574bff;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #949d2b;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #c74151;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar section-content">
+          <a href="FrontPage.html" class="navlogo">
+            <h2 class="logotext">Xtreme Cutters</h2>
+          </a>
+          <ul class="navmenu">
+            <li class="navitem">
+              <a href="FrontPage.html" class="navlink">Home</a>
+            </li>
+            <li class="navitem dropdown">
+              <a href="Products.html" class="navlink">Products</a>
+              <ul class="dropdown-menu">
+                <li><a href="Product1.html" class="dropdown-link">Product 1</a></li>
+                <li><a href="Product2.html" class="dropdown-link">Product 2</a></li>
+                <li><a href="Product3.html" class="dropdown-link">Product 3</a></li>
+              </ul>
+            </li>
+            <li class="navitem">
+              <a href="Register.html" class="navlink">Register</a>
+            </li>
+            <li class="navitem">
+              <a href="login.html" class="navlink">Login</a>
+            </li>
+            <li class="navitem">
+              <a href="contactus.html" class="navlink">Contact Us</a>
+            </li>
+            <li class="navitem">
+              <a href="cart.html" class="navlink">Cart</a>
+            </li>
+          </ul>
+        </nav>
+    </header>
+    
+    <div class="main-content">
+        <div class="container">
+            <form id="contactForm">
+                <h2>Contact Us</h2>
+
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required oninput="validateField('name')">
+                <span id="name-error" class="error"></span>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required oninput="validateField('email')">
+                <span id="email-error" class="error"></span>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter subject" required oninput="validateField('subject')">
+                <span id="subject-error" class="error"></span>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Enter your message" required oninput="validateField('message')"></textarea>
+                <span id="message-error" class="error"></span>
+
+                <button type="button" onclick="submitContactForm()">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function validateField(fieldName) {
+            // Get field value
+            const value = document.getElementById(fieldName).value.trim();
+            
+            // Clear previous error
+            const errorElement = document.getElementById(fieldName + "-error");
+            
+            // Validation based on field type
+            switch(fieldName) {
+                case 'name':
+                    const nameRegex = /^[A-Za-z\s]{3,}$/;
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your name.";
+                    } else if (!nameRegex.test(value)) {
+                        errorElement.innerText = "Name should contain only letters and spaces (minimum 3 characters).";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+                    
+                case 'email':
+                    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your email address.";
+                    } else if (!emailRegex.test(value)) {
+                        errorElement.innerText = "Please enter a valid email address.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+                    
+                case 'subject':
+                    if (value === "") {
+                        errorElement.innerText = "Please enter the subject.";
+                    } else if (value.length < 3) {
+                        errorElement.innerText = "Subject should be at least 3 characters long.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+                    
+                case 'message':
+                    if (value === "") {
+                        errorElement.innerText = "Please enter your message.";
+                    } else if (value.length < 10) {
+                        errorElement.innerText = "Message should be at least 10 characters long.";
+                    } else {
+                        errorElement.innerText = "";
+                    }
+                    break;
+            }
+        }
+
+        function validateContactForm() {
+            // Validate all fields individually
+            const fields = ['name', 'email', 'subject', 'message'];
+            fields.forEach(field => validateField(field));
+            
+            // Check if there are any errors
+            let isValid = true;
+            fields.forEach(field => {
+                const errorElement = document.getElementById(field + "-error");
+                if (errorElement.innerText !== "") {
+                    isValid = false;
+                }
+            });
+            
+            return isValid;
+        }
+
+        function submitContactForm() {
+            // Run validation first
+            if (validateContactForm()) {
+                // Proceed with form submission logic
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const subject = document.getElementById("subject").value;
+                const message = document.getElementById("message").value;
+
+                const contactData = {
+                    name: name,
+                    email: email,
+                    subject: subject,
+                    message: message
+                };
+
+                localStorage.setItem("contactData", JSON.stringify(contactData));
+                alert("Message sent successfully!");
+                // Reset form after successful submission
+                document.getElementById("contactForm").reset();
+            }
+        }
+
+        // Add real-time validation to all fields
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial validation setup
+            const fields = ['name', 'email', 'subject', 'message'];
+            
+            fields.forEach(field => {
+                const element = document.getElementById(field);
+                
+                // Add blur event for each field
+                element.addEventListener('blur', function() {
+                    validateField(field);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

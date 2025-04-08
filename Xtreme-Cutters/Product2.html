@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solid Carbide Endmill</title>
+    <link rel="stylesheet" href="Product1.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar section-content">
+      <a href="FrontPage.html" class="navlogo">
+        <h2 class="logotext">Xtreme Cutters</h2>
+      </a>
+      <ul class="navmenu">
+        <li class="navitem">
+          <a href="FrontPage.html" class="navlink">Home</a>
+        </li>
+        <li class="navitem dropdown">
+          <a href="Products.html" class="navlink">Products</a>
+          <ul class="dropdown-menu">
+            <li><a href="Product1.html" class="dropdown-link">Product 1</a></li>
+            <li><a href="Product2.html" class="dropdown-link">Product 2</a></li>
+            <li><a href="Product3.html" class="dropdown-link">Product 3</a></li>
+          </ul>
+        </li>
+        <li class="navitem">
+          <a href="Register.html" class="navlink">Register</a>
+        </li>
+        <li class="navitem">
+          <a href="login.html" class="navlink">Login</a>
+        </li>
+        <li class="navitem">
+          <a href="contactus.html" class="navlink">Contact Us</a>
+        </li>
+        <li class="navitem">
+          <a href="cart.html" class="navlink">Cart</a>
+        </li></li>
+      </ul>
+
+    </nav>
+  </header>
+    <main class="container">
+ 
+        <!-- Left Column / Headphones Image -->
+        <div class="left-column">
+          <img id="product-image" data-image="Carbide Endmill" class="active" src="Carbide Endmill.webp" alt="Carbide Endmill">
+        </div>
+       
+        <!-- Right Column -->
+        <div class="right-column">
+       
+          <!-- Product Description -->
+          <div class="product-description">
+            <span>Carbide Cutter</span>
+            <h1>Solid Carbide Endmill</h1>
+            <p>Carbide endmill cutters are milling tools made from solid carbide, known for their hardness and durability. They come in various shapes, including flat, ballnose, and corner radius, and are used for precision machining of metals and other materials. These cutters are ideal for applications requiring high wear resistance and fine finishes.</p>
+          </div>
+       
+          <!-- Product Configuration -->
+          <div class="product-configuration">
+       
+            <!-- Cable Configuration -->
+            <div class="cable-config">
+              <span>Cable configuration</span>
+       
+              <div class="cable-choose">
+                <button class="selected" onclick="changeProduct('Flat Endmill.png', 500)">Flat Endmills</button>
+                <button onclick="changeProduct('Carbide Ballnose.jpg', 550)">Ballnose Endmills</button>
+                <button onclick="changeProduct('Corner Radius.png', 600)">Corner Radius Endmills</button>
+              </div>
+       
+              <a href="contactus.html">Enquire about a Custom Cutter</a>
+            </div>
+          </div>
+       
+          <!-- Product Pricing -->
+          <div class="product-price">
+            <span id="product-price">Rs. 500</span>
+            <a href="#" class="cart-btn">Add to cart</a>
+          </div>
+        </div>
+      </main>
+<script>
+  function changeProduct(imageSrc, price) {
+    document.getElementById('product-image').src = imageSrc;
+    document.getElementById('product-price').innerText = 'Rs. ' + price;
+  }
+</script>
+</body>
+</html>
